@@ -1,0 +1,47 @@
+<!DOCTYPE html>   <!-- views/addList.ejs -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add List</title>
+    <style>
+        body{
+            height: 100vh;
+            background-image: linear-gradient(90deg, rgba(255, 255, 0, 0.53) 50%,white 50%);
+            text-align: center;
+            margin-top:10%;
+            font-family:'Times New Roman', Times, serif;
+        }
+        label{
+            font-size: 22px;
+        }
+        input{
+            height: 50px;
+            background: transparent;
+            border: none;
+            border-bottom:2px solid black;
+            font-size: 18px;
+            padding-left:8px ; 
+        }
+        button{
+            height: 40px;
+             width: 40px; 
+            background-color: rgb(198, 204, 19);
+            border: none;
+            border-radius: 50%;
+            font-size:25px ;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Add List</h1>
+    <form action="/add-list" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="List name">
+        <button type="submit">+</button>
+    </form>
+</body>
+</html>
+

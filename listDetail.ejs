@@ -1,0 +1,97 @@
+<!DOCTYPE html>   <!-- views/listDetail.ejs -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Detail</title>
+    <style>
+        body{
+            
+            height: 100vh;
+            background-image: linear-gradient(90deg, rgba(0, 255, 208, 0.53) 50%,white 50%);
+            text-align: center;
+            margin-top:10%;
+            font-family:'Times New Roman', Times, serif;
+        }
+        .item_contaner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        ul{
+            border: 1px solid gray;
+            border-radius: 8px;
+            width: 150px;
+            padding: 8px;
+            height: auto;
+           
+            background-color: rgb(212, 251, 251);
+         
+        }
+        li {
+            display: flex;
+            padding:0;
+            margin: 0;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 500;
+        }
+        .item_contaner input[type="checkbox"]{
+            height: 18px;
+            width: 18px;
+            margin-right: 8px;
+            padding: 0;
+        }
+        .item_contaner input[type="checkbox"]:checked+label{
+            display: none;
+            
+        }
+        .addItem_contaner input{
+            height: 50px;
+            background: transparent;
+            border: none;
+            border-bottom:2px solid black;
+            font-size: 18px;
+            padding-left:8px ; 
+        }
+        .addItem_contaner label{
+            font-size: 22px;
+        }
+        button{
+            height: 40px;
+            width: 40px; 
+            background-color: rgba(31, 176, 130, 0.705);
+            border: none;
+            border-radius: 50%;
+            font-size:25px ;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1><%= list.name %></h1>
+    <div class="item_contaner">
+    <ul>
+        <% list.items.forEach((item,index) => { %>
+            <li>
+                <form action="/delete" method="POST">
+                <!-- <input type="checkbox" id="<%= item.name %>" name="<%= item.name %>" onchange="this.form.submit"> -->
+                <input type="checkbox" name="deleteItem" value="<%= index %>">
+                <label for="<%= item.name %>"><%= item.name %></label>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+<div class="addItem_contaner">
+    <h2>Add Item</h2>
+    <form action="/list/<%= list.id %>/add-item" method="POST">
+        <label for="item">Item Name:</label>
+        <input type="text" id="item" name="name" required >
+        <button type="submit">+</button>
+    </form>
+</div>
+</body>
+</html>
